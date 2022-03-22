@@ -3,6 +3,12 @@ const bodyParser = require('body-parser');
 const talkerJson = require('./Middlewares/talkerJson');
 const talkerId = require('./Middlewares/talkerId');
 const login = require('./Middlewares/login');
+const ageValidate = require('./Middlewares/ageValidate');
+const rateValidate = require('./Middlewares/rateValidate');
+const nameValidate = require('./Middlewares/nameValidate');
+const talkerPost = require('./Middlewares/talkerPost');
+const dateValidate = require('./Middlewares/dateValidate');
+const tokenValidation = require('./Middlewares/tokenValidation');
 
 const app = express();
 app.use(bodyParser.json());
@@ -18,6 +24,9 @@ app.get('/', (_request, response) => {
 app.get('/talker', talkerJson);
 app.get('/talker/:id', talkerId);
 app.post('/login', login);
+app.post('/talker', 
+tokenValidation, nameValidate, ageValidate, dateValidate, rateValidate, talkerPost);
+
 app.listen(PORT, () => {
   console.log('Online');
 });
