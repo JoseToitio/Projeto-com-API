@@ -1,4 +1,4 @@
-const rateValidate = (res, req, next) => {
+const rateValidate = (req, res, next) => {
   const { rate } = req.body.talk;
   if (rate === undefined || rate === '') {
     return res.status(400).json({

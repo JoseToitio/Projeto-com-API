@@ -1,4 +1,4 @@
-const ageValidate = (res, req, next) => {
+const ageValidate = (req, res, next) => {
   const { age } = req.body;
   if (age === undefined 
     || age === '') return res.status(400).json({ message: 'O campo "age" é obrigatório' });
