@@ -11,6 +11,7 @@ const dateValidate = require('./Middlewares/dateValidate');
 const tokenValidation = require('./Middlewares/tokenValidation');
 const talkValidate = require('./Middlewares/talkValidate');
 const editTalker = require('./Middlewares/editTalker');
+const deleteTalker = require('./Middlewares/deleteTalker');
 
 const app = express();
 app.use(bodyParser.json());
@@ -30,6 +31,7 @@ app.post('/talker',
   tokenValidation, nameValidate, ageValidate, talkValidate, dateValidate, rateValidate, talkerPost);
 app.put('/talker/:id', 
   tokenValidation, nameValidate, ageValidate, talkValidate, dateValidate, rateValidate, editTalker);
+app.delete('/talker/:id', tokenValidation, deleteTalker);
 app.listen(PORT, () => {
   console.log('Online');
 });
